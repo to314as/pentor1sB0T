@@ -1,0 +1,5 @@
+FirstTime true
+Lines 0
+Games 0
+AllScore 0
+BestWeight []

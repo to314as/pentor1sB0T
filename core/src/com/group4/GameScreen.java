@@ -224,6 +224,7 @@ public class GameScreen extends GameLogic implements Screen {
             if (!super.fall()) {
                 super.checkFullLines();
                 if (!super.init()){
+                    dispose();
                     return false;
                 }
             }

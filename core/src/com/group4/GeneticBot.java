@@ -7,6 +7,7 @@ import java.util.Collections;
 import static com.group4.Constants.EVALTIME;
 import static com.group4.Constants.MUTATION_CONSTANT;
 import static com.group4.Constants.MUTATION_PROBAPILITY;
+import static com.group4.Constants.OFFSPRING_PROPORTION;
 import static com.group4.Constants.POOLSIZE;
 import static com.group4.Constants.VARIABILITY;
 
@@ -27,7 +28,7 @@ public class GeneticBot extends GameLogic{
     public GeneticBot (TetrisGame game){this.game=game;}
 
     public void evolve(){
-        if(updates<=10){
+        if(updates<=15){
             gameCount++;
             setFitness(chromosome, super.getScore());
             if (gameCount >= EVALTIME) {
@@ -39,7 +40,7 @@ public class GeneticBot extends GameLogic{
                 TournamentSelection();
                 chromosome = 0;
             }
-            if (getOffspringCount() >= getPoolCount() * 0.1) {
+            if (getOffspringCount() >= getPoolCount() * OFFSPRING_PROPORTION) {
                 updatePool();
                 updates++;
                 weightsOffspringPool=new ArrayList<RankedArray>();

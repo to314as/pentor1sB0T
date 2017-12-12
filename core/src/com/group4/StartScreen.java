@@ -25,12 +25,13 @@ public class StartScreen extends InputAdapter implements Screen{
     private Texture background;
     private TextButton newGameButton;
     private TextButton HighscoreButton;
-    private TextButton QuiteButton;
+    private TextButton QuitButton;
 
     public StartScreen(TetrisGame game) {
         this.game = game;
     }
 
+    /**create a layout for the TextButtons.*/
     private void createBasicSkin(){
         //Create a font
         BitmapFont font = new BitmapFont();
@@ -54,6 +55,7 @@ public class StartScreen extends InputAdapter implements Screen{
 
     }
 
+    /**main method - inact the layout, load the graphics.*/
     @Override
     public void show() {
         stage = new Stage();
@@ -78,16 +80,17 @@ public class StartScreen extends InputAdapter implements Screen{
         });
         stage.addActor(HighscoreButton);
         stage.addActor(newGameButton);
-        QuiteButton = new TextButton("Quite", skin); // Use the initialized skin
-        QuiteButton.setPosition(Gdx.graphics.getWidth()/2 - Gdx.graphics.getWidth()/4 , 2*Gdx.graphics.getHeight()/6);
-        QuiteButton.addListener(new ChangeListener() {
+        QuitButton = new TextButton("Quit", skin); // Use the initialized skin
+        QuitButton.setPosition(Gdx.graphics.getWidth()/2 - Gdx.graphics.getWidth()/4 , 2*Gdx.graphics.getHeight()/6);
+        QuitButton.addListener(new ChangeListener() {
             public void changed (ChangeEvent event, Actor actor) {
                 Gdx.app.exit();
             }
         });
-        stage.addActor(QuiteButton);
+        stage.addActor(QuitButton);
     }
 
+    /** display content at dynamic frame rate (standard 60fps).*/
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -118,6 +121,7 @@ public class StartScreen extends InputAdapter implements Screen{
 
     }
 
+    /**dispose graphics */
     @Override
     public void dispose() {
         background.dispose();

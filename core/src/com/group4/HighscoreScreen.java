@@ -35,12 +35,20 @@ public class HighscoreScreen implements Screen{
     private TextButton backButton;
     private Skin skin;
 
+    /** HighscoreScreen constructor. Can be deployed to create an Highscorescreen object which is used
+     * to display the Names and scores of all Games.
+     *
+     * @param game
+     * @param names
+     * @param scores
+     */
     public HighscoreScreen(TetrisGame game, ArrayList<String> names, ArrayList<Integer> scores) {
         this.game = game;
         this.names=names;
         this.scores=scores;
     }
 
+    /** create a layout for the TextButton*/
     private void createBasicSkin(){
         //Create a font
         BitmapFont font = new BitmapFont();
@@ -65,6 +73,7 @@ public class HighscoreScreen implements Screen{
 
     }
 
+    /**main method - load grapohics, inact layout*/
     @Override
     public void show() {
         stage = new Stage();
@@ -106,6 +115,7 @@ public class HighscoreScreen implements Screen{
 
     }
 
+    /** display/refresh screen at 60 fps*/
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
@@ -138,6 +148,7 @@ public class HighscoreScreen implements Screen{
 
     }
 
+    /** dispose Graphics*/
     @Override
     public void dispose() {
         stage.dispose();

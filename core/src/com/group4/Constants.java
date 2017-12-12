@@ -16,12 +16,13 @@ public class Constants {
     public final static int SIDE = 750;
     public final static int TIMESPAN_NORMAL = 1000;
     public final static int TIMESPAN_FAST = 100;
-    public final static int TIMESPAN_SUPERFAST = 5;
-    public final static int POOLSIZE = 10;
+    public final static int TIMESPAN_SUPERFAST = 1;
+    public final static int POOLSIZE = 20;
     public final static int EVALTIME=10;
-    public static final double VARIABILITY = 1;
+    public static final double VARIABILITY = 0.8;
     public static final double MUTATION_CONSTANT = 0.5;
-    public static final double MUTATION_PROBAPILITY= 1.05;
+    public static final double MUTATION_PROBAPILITY= 0.05;
+    public static final double OFFSPRING_PROPORTION=0.1;
 
     public final static int[][][] rotations ={{
                 { 1, 1,0,2,0,3,0,4,0 },  // I in its default orientation.

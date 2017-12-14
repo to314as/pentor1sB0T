@@ -20,6 +20,9 @@ public class OptimalMoveAdvance {
         this.pentomino=pentomino;
         this.weights=weights;
     }
+
+    /** test all possible positions and rotations for a given pentomino and assigns a score to each of them
+     * in respect to the six features(heighestPoint,pentominoHeight,fullLines,connections,holes,touchEdge) and the according weights.*/
     public void calculate(){
         piece=pentomino.getPiece();
         int possibleRotations=rotations[piece[0]-1].length;

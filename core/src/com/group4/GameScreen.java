@@ -247,7 +247,7 @@ public class GameScreen extends GameLogic implements Screen {
         batch.end();
         batch.begin();
         font.draw(batch, "Games: "+super.toString(bot.getGameCount()), Math.round(1.5*width),(ROWS-6)*(height / ROWS));
-        font.draw(batch, "Chromoson: "+super.toString(bot.getChromosome()), Math.round(1.5*width),(ROWS-7)*(height / ROWS));
+        font.draw(batch, "Gene: "+super.toString(bot.getChromosome()), Math.round(1.5*width),(ROWS-7)*(height / ROWS));
         font.draw(batch, "Updates: "+super.toString(bot.getUpdates()), Math.round(1.5*width),(ROWS-8)*(height / ROWS));
         font.getData().setScale(0.6f);
         font.draw(batch, Arrays.deepToString(bot.getWeights(bot.getChromosome())), Math.round(1.5*width),(ROWS-8)*(height / ROWS)-5*MARGIN);

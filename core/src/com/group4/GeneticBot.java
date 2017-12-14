@@ -27,6 +27,12 @@ public class GeneticBot extends GameLogic{
 
     public GeneticBot (TetrisGame game){this.game=game;}
 
+    /**makes the bot evolve over time.
+     * selects from the set of weights and plays with each set a certain number of times(EVALTIME).
+     * Goes through the whole pool of initialized weights and in the end, performes a tournament selection to produce
+     * fit offsprings which will be integrated into the pool after a certain threshhold(OFFSPRINGPROPORTION) is reached.
+     * Then updates and begins again. Until 15 updates have been performed.
+     */
     public void evolve(){
         if(updates<=15){
             gameCount++;
@@ -59,6 +65,8 @@ public class GeneticBot extends GameLogic{
         return gameCount;
     }
 
+    /** initializes the pool of random weights assigned for each of the six features(heighestPoint,pentominoHeight,fullLines,connections,holes,touchEdge)
+     */
     public void createPool(){
         for(int p=0;p<POOLSIZE;p++){
             weights=new double[2][6];
@@ -70,7 +78,7 @@ public class GeneticBot extends GameLogic{
         super.setWeights(getWeights(chromosome));
     }
 
-
+    /**sets the fitness for the weights to be able to compare*/
     public void setFitness(int chromosome,int score){
         if(weightsPool.get(chromosome).getScore()==0)
             weightsPool.get(chromosome).setScore((weightsPool.get(chromosome).getScore()+score)/2);
@@ -79,6 +87,7 @@ public class GeneticBot extends GameLogic{
         }
     }
 
+    /**performes a tournament selection*/
     public void TournamentSelection(){
         ArrayList<RankedArray> selection=new ArrayList<RankedArray>();
         double[] best={-1,0};
@@ -105,6 +114,11 @@ public class GeneticBot extends GameLogic{
         weightsOffspringPool.add(array);
     }
 
+    /**mutates gene with a certain probability(MUTATION_PROBAPILITY).
+     *
+     * @param offspring
+     * @return offspring
+     */
     private double[][] mutation(double[][] offspring) {
         if(Math.random()<MUTATION_PROBAPILITY){
             int i=(int)(Math.random()*offspring[0].length);
@@ -126,6 +140,9 @@ public class GeneticBot extends GameLogic{
         return weightsPool.get(chromosome).getWeights();
     }
 
+    /**updates the pool with the offsprings and deletes the worst performing candidates from the list.
+     *
+     */
     public void updatePool(){
         Collections.sort(weightsPool);
         weightsPool.subList(0, (int) (weightsPool.size()*0.1)).clear();

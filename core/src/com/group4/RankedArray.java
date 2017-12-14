@@ -3,6 +3,10 @@ package com.group4;
 /**
  * Created by Tobias on 07/12/2017.
  */
+
+/**ranked array in order to compare the elements of the Pool and order them
+ * with collections.sort(). Implements Comparable. Provides getters and setters for score and weight of each element.
+ */
 public class RankedArray implements Comparable{
     double[][] array=new double[2][6];
     public RankedArray(double[][] array){this.array=array;}

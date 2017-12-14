@@ -120,22 +120,18 @@ public class GameScreen extends GameLogic implements Screen {
         font = new BitmapFont();
         createBasicSkin();
         stage = new Stage();
-        newGameButton = new TextButton("New game", skin); // Use the initialized skin
-        newGameButton.setPosition(6*Gdx.graphics.getWidth()/10, 3*Gdx.graphics.getHeight()/20);
-        newGameButton.addListener(new ChangeListener() {
-            public void changed (ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
-            }
-        });
-        stage.addActor(newGameButton);
         pauseButton = new TextButton("Pause", skin); // Use the initialized skin
         pauseButton.setPosition(6*Gdx.graphics.getWidth()/10, 1*Gdx.graphics.getHeight()/20);
         pauseButton.addListener(new ChangeListener() {
             public void changed (ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
+                if(!GameScreen.super.getPause())
+                    GameScreen.super.setPause(true);
+                else
+                    GameScreen.super.setPause(false);
             }
         });
         stage.addActor(pauseButton);
+        Gdx.input.setInputProcessor(stage);// Make the stage consume events
         bot=new GeneticBot(game);
         if(bot.getPoolCount()==0)
             bot.createPool();

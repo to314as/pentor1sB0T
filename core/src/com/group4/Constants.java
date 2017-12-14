@@ -16,7 +16,7 @@ public class Constants {
     public final static int SIDE = 750;
     public final static int TIMESPAN_NORMAL = 1000;
     public final static int TIMESPAN_FAST = 100;
-    public final static int TIMESPAN_SUPERFAST = 1;
+    public final static int TIMESPAN_SUPERFAST = 5;
     public final static int POOLSIZE = 100;
     public final static int EVALTIME=10;
     public static final double VARIABILITY = 0.8;

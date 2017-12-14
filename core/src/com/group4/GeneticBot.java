@@ -15,6 +15,16 @@ import static com.group4.Constants.VARIABILITY;
  * Created by Tobias on 06/12/2017.
  */
 
+/**
+ * Heart of the project.
+ * A genetic bot that first initalizes a random population of weights each one assigned
+ * to one of the six features we evaluate for a pentomino(heighestPoint,pentominoHeight,fullLines,connections,holes,touchEdge)
+ * which are calculated in evalPosition();
+ * evaluates performance for each and performs a tournament selection to decide over parents for offspring's.
+ * Updates population when children reach a certain proportion of the population and starts over.
+ * Getting better and better over time(a lot of time).
+ */
+
 public class GeneticBot extends GameLogic{
     private final TetrisGame game;
     private static double[][] weights =new double[2][6];

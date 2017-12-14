@@ -64,7 +64,6 @@ public abstract class GameLogic {
         totalPentominos++;
         OptimalMoveAdvance optimal=new OptimalMoveAdvance(pentomino,weights);
         optimal.calculate();
-        Gdx.input.setInputProcessor(pentomino);
         return true;
     }
 
